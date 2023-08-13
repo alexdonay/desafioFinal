@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bem-vindo</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Seja bem-vindo</h1>
+    <% if current_user %>
+      <h2><%= current_user.email %></h2>
+      <%= link_to "Faça upload de um arquivo", new_upload_path, class: "btn btn-gmail btn-block" %>
+      <%= link_to "Editar Conta", edit_user_registration_path, class: "btn btn-secondary btn-block" %>
+      <%= button_to "Logout", destroy_user_session_path, class: "btn btn-secondary btn-block", data: { turbo: "false" }, method: :delete %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-gmail btn-block" %>
+      <%= link_to "Criar Conta", new_user_registration_path, class: "btn btn-secondary btn-block" %>
+    <% end %>
+  </div>
+
+</body>
+</html>

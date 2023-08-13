@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reenviar Instruções de Confirmação</title>
+  <!-- Inclua os estilos do Bootstrap (CSS) aqui -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilo personalizado */
+    body {
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 50px auto;
+    }
+    .btn-gmail {
+      background-color: #4285F4;
+      color: #fff;
+    }
+    .btn-gmail:hover {
+      background-color: #357AE8;
+    }
+    .btn-gmail:focus {
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center">Reenviar Instruções de Confirmação</h2>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Reenviar instruções de confirmação", class: "btn btn-gmail btn-block" %>
+      </div>
+    <% end %>
+  </div>
+  <!-- Inclua os scripts do Bootstrap (JavaScript) aqui -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+

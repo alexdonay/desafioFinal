@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload de Arquivo</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Upload de Arquivo</h1>
+    <form action="<%= uploads_path %>" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="file">Selecione um arquivo:</label>
+        <input type="file" id="file" name="upload[file]" class="form-control-file">
+      </div>
+      <div class="form-group text-center">
+        <input type="submit" value="Enviar" class="btn btn-gmail">
+      </div>
+    </form>
+    <% if flash[:receita_total] %>
+      <div class="revenue">
+        <h2>Receita Total: <%= number_to_currency(flash[:receita_total], unit: "R$", precision: 2) %></h2>
+      </div>
+    <% end %>
+  </div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
