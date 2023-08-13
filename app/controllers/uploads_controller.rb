@@ -36,7 +36,6 @@ class UploadsController < ApplicationController
 
       receita_total += data[:item_price] * data[:purchase_count]
     end
-
     receita_total
   end
 end
